@@ -1,123 +1,166 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "./ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
+interface MenuItem {
+  title: string;
+  href?: string;
+  description?: string;
+  children?: MenuItem[];
+}
+
+const fetchMenuData = async (): Promise<MenuItem[]> => {
+  // Fetch the menu data from an API or other source
+  const response = await fetch("/api/menu");
+  const data = await response.json();
+  return data;
+};
 
 export default function Header() {
+  const [menuData, setMenuData] = React.useState<MenuItem[]>([
+    {
+      title: "Home",
+      children: [
+        {
+          title: "Web Development",
+          href: "/services/web-development",
+          description: "Building modern and responsive websites",
+        },
+        {
+          title: "SEO",
+          href: "/services/seo",
+          description: "Improving your website's visibility on search engines",
+        },
+      ],
+    },
+    {
+      title: "About",
+      children: [
+        {
+          title: "Web Development",
+          href: "/services/web-development",
+          description: "Building modern and responsive websites",
+        },
+        {
+          title: "SEO",
+          href: "/services/seo",
+          description: "Improving your website's visibility on search engines",
+        },
+      ],
+    },
+    {
+      title: "Services",
+      children: [
+        {
+          title: "Web Development",
+          href: "/services/web-development",
+          description: "Building modern and responsive websites",
+        },
+        {
+          title: "SEO",
+          href: "/services/seo",
+          description: "Improving your website's visibility on search engines",
+        },
+        {
+          title: "Digital Marketing",
+          href: "/services/digital-marketing",
+          description: "Promoting your business through digital channels",
+        },
+      ],
+    },
+  ]);
+
+  const [openStates, setOpenStates] = React.useState<boolean[]>([]);
+
+  React.useEffect(() => {
+    fetchMenuData().then((data) => {
+      setMenuData(data);
+      setOpenStates(new Array(data.length).fill(false));
+    });
+  }, []);
+
+  const handleToggle = (index: number) => {
+    setOpenStates((prev) => {
+      const newStates = [...prev];
+      newStates[index] = !newStates[index];
+      return newStates;
+    });
+  };
+
   return (
-    <nav className="flex flex-row justify-between px-32 py-8 w-full bg-white-900 backdrop-filter backdrop-blur-md bg-opacity-80">
-      {/* Logo and web tittle */}
-      <div className="flex flex-row gap-3">
-        <Image
-          className="h-12 w-12 flex-none rounded-full bg-gray-50"
-          src="/logo.png"
-          alt="Website Logo"
-          width={54}
-          height={54}
-        />
-        <div className="flex flex-col font-bold">
-          <span>Paroki Brayut</span>
-          <span>Santo Yohanes Paulus II</span>
+    <nav className="flex flex-row justify-between px-56 py-8 w-full bg-white-900 backdrop-filter backdrop-blur-md bg-opacity-80">
+      {/* Logo and web title */}
+      <Link href="/" passHref>
+        <div className="flex flex-row gap-3 cursor-pointer">
+          <Image
+            className="h-12 w-12 flex-none rounded-full bg-gray-50"
+            src="/logo.png"
+            alt="Website Logo"
+            width={54}
+            height={54}
+          />
+          <div className="flex flex-col font-bold">
+            <span>Paroki Brayut</span>
+            <span>Santo Yohanes Paulus II</span>
+          </div>
         </div>
-      </div>
+      </Link>
 
       {/* Menu Items */}
-      {/* change dropdown button into navigation menu */}
       <div className="flex gap-4">
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[150px] gap-3 p-4 md:w-[100px] md:grid-cols-1 lg:w-[200px] ">
-                  {components.map((component) => (
-                    <ListItem
-                      key={component.title}
-                      title={component.title}
-                      href={component.href}
-                    >
-                      {component.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        {menuData.map((menuItem, index) => {
+          const isOpen = openStates[index];
+
+          return (
+            <DropdownMenu
+              key={menuItem.title}
+              onOpenChange={() => handleToggle(index)}
+            >
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" onClick={() => handleToggle(index)}>
+                  {menuItem.title}
+                  {isOpen ? (
+                    <ChevronUp className="ml-2" size={14} strokeWidth={1.5} />
+                  ) : (
+                    <ChevronDown className="ml-2" size={14} strokeWidth={1.5} />
+                  )}
+                </Button>
+              </DropdownMenuTrigger>
+              {menuItem.children && (
+                <DropdownMenuContent align="start">
+                  <ul className="flex flex-col w-64 gap-3 p-4">
+                    {menuItem.children.map((child) => (
+                      <DropdownMenuItem key={child.title}>
+                        <Link href={child.href ?? "#"} passHref legacyBehavior>
+                          <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <div className="text-sm font-medium leading-none">
+                              {child.title}
+                            </div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              {child.description}
+                            </p>
+                          </a>
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </ul>
+                </DropdownMenuContent>
+              )}
+            </DropdownMenu>
+          );
+        })}
       </div>
     </nav>
   );
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
