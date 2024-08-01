@@ -97,9 +97,8 @@ export default function Header() {
       return newStates;
     });
   };
-
   return (
-    <nav className="flex flex-row justify-between px-56 py-8 w-full bg-white-900 backdrop-filter backdrop-blur-md bg-opacity-80">
+    <nav className="flex flex-row justify-between items-center w-10/12 mt-4 pl-8 pr-12 py-5 backdrop-filter backdrop-blur-sm text-gray-800 fixed top-0 z-50 rounded-xl bg-white/50 drop-shadow-md">
       {/* Logo and web title */}
       <Link href="/" passHref>
         <div className="flex flex-row gap-3 cursor-pointer">

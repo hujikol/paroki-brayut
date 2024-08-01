@@ -6,10 +6,15 @@ import { Instagram, MessageSquareText, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className={cn("w-full text-white py-8", "bg-[#303F76]", "mt-auto")}>
+    <footer
+      className={cn(
+        "w-10/12 text-white mt-auto mb-4 px-2 py-8 rounded-xl",
+        "bg-[#303F76]"
+      )}
+    >
       <div className="flex flex-row justify-evenly">
         {/* first col */}
-        <div className="flex flex-col gap-3 ml-12 max-w-96">
+        <div className="flex flex-col gap-3 ml-4 max-w-96">
           <div className="flex flex-row gap-3 items-center">
             <Image
               className="h-12 w-12 flex-none rounded-full bg-gray-50"
@@ -46,6 +51,17 @@ export default function Footer() {
               <span>Telepon</span>
               <span>(0274) 860-9221</span>
             </div>
+            <div className="flex space-x-4 mt-2">
+              <a href="#">
+                <Instagram className="icon" />
+              </a>
+              <a href="#">
+                <Youtube className="icon" />
+              </a>
+              <a href="#">
+                <MessageSquareText className="icon" />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -78,7 +94,7 @@ export default function Footer() {
         </div>
 
         {/* third col */}
-        <div className="flex flex-col gap-3 mr-12 w-3/12">
+        <div className="flex flex-col gap-3 mr-2 w-4/12">
           <h3 className="flex flex-col text-lg font-bold">
             <span>Donasi Pembangunan Gereja</span>
             <span>Santo Yohanes Paulus II</span>
@@ -94,7 +110,9 @@ export default function Footer() {
               />
             </div>
             <div className="flex flex-col gap-3">
-              <p>A.n. PGPM Paroki Santo Yohanes Paulus II</p>
+              <span className="font-bold">
+                PGPM Paroki Santo Yohanes Paulus II
+              </span>
               <div>
                 <b>Bank Mandiri KCP Sleman</b>
                 <p>No. Rek. 137-00-1632682-5</p>
@@ -109,19 +127,8 @@ export default function Footer() {
       </div>
 
       {/* social media & copyright row*/}
-      <div className="flex flex-col mx-auto text-center mt-4 gap-3">
-        <div className="flex justify-center space-x-4 mt-2">
-          <a href="#">
-            <Instagram className="icon" />
-          </a>
-          <a href="#">
-            <Youtube className="icon" />
-          </a>
-          <a href="#">
-            <MessageSquareText className="icon" />
-          </a>
-        </div>
-        <p>© 2023 KOMSOS Paroki Brayut Santo Yohanes Paulus II</p>
+      <div className="flex flex-col mx-auto text-center mt-12 gap-3">
+        <p>© 2024 KOMSOS Paroki Brayut Santo Yohanes Paulus II</p>
       </div>
     </footer>
   );

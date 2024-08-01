@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,11 +25,16 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen font-sans antialiased",
+          "bg-[#FBF8F4]",
           fontSans.variable
         )}
       >
-        {children}
+        <main className="flex flex-col items-center">
+          <Header />
+          {children}
+          <Footer />
+        </main>
       </body>
     </html>
   );
