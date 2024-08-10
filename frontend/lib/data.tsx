@@ -1,3 +1,5 @@
+import { constants } from "buffer";
+
 export interface Post {
   slug: string;
   title: string;
@@ -90,5 +92,66 @@ export const categories: Category[] = [
   {
     slug: "artikel",
     name: "Artikel",
+  },
+];
+
+export interface MenuData {
+  title: string;
+  href?: string;
+  description?: string;
+  children?: MenuData[];
+}
+
+export const menuData: MenuData[] = [
+  {
+    title: "Profil",
+    children: [
+      {
+        title: "Sejarah Paroki",
+        href: "/profil/sejarah-paroki",
+        description: "Sejarah perjalanan terbentuknya Paroki Brayut",
+      },
+      {
+        title: "Kepengurusan",
+        href: "/profil/staff",
+        description:
+          "Pastor paroki, staff gereja, dan jajaran pengurus lainnya",
+      },
+    ],
+  },
+  {
+    title: "Gereja",
+    children: [
+      {
+        title: "Tambakrejo",
+        href: "/gereja/tambakrejo",
+        description: "Detail gereja tambakrejo",
+      },
+      {
+        title: "SEO",
+        href: "/services/seo",
+        description: "Improving your website's visibility on search engines",
+      },
+    ],
+  },
+  {
+    title: "Informasi",
+    children: [
+      {
+        title: "Web Development",
+        href: "/services/web-development",
+        description: "Building modern and responsive websites",
+      },
+      {
+        title: "SEO",
+        href: "/services/seo",
+        description: "Improving your website's visibility on search engines",
+      },
+      {
+        title: "Digital Marketing",
+        href: "/services/digital-marketing",
+        description: "Promoting your business through digital channels",
+      },
+    ],
   },
 ];

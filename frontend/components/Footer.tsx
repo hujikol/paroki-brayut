@@ -9,7 +9,7 @@ export default function Footer() {
     <footer
       className={cn(
         "w-10/12 text-white mt-auto mb-4 px-2 py-8 rounded-xl",
-        "bg-[#303F76]"
+        "bg-[#303F76]",
       )}
     >
       <div className="flex flex-row justify-evenly">
@@ -50,17 +50,6 @@ export default function Footer() {
             <div className="flex flex-row justify-between">
               <span>Telepon</span>
               <span>(0274) 860-9221</span>
-            </div>
-            <div className="flex space-x-4 mt-2">
-              <a href="#">
-                <Instagram className="icon" />
-              </a>
-              <a href="#">
-                <Youtube className="icon" />
-              </a>
-              <a href="#">
-                <MessageSquareText className="icon" />
-              </a>
             </div>
           </div>
         </div>
@@ -127,7 +116,18 @@ export default function Footer() {
       </div>
 
       {/* social media & copyright row*/}
-      <div className="flex flex-col mx-auto text-center mt-12 gap-3">
+      <div className="flex flex-col mx-auto text-center mt-6 gap-3">
+        <div className="flex gap-6 justify-center mt-2">
+          <Link href="#" className="hover:underline">
+            <span>Instagram</span>
+          </Link>
+          <Link href="#" className="hover:underline">
+            <span>Youtube</span>
+          </Link>
+          <Link href="#" className="hover:underline">
+            <span>WhatsApp</span>
+          </Link>
+        </div>
         <p>© 2024 KOMSOS Paroki Brayut Santo Yohanes Paulus II</p>
       </div>
     </footer>

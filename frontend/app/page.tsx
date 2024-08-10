@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { categories } from "@/lib/data";
 
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -7,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full flex-col items-center">
+    <section className="flex min-h-screen w-full flex-col items-center">
       <div className="relative w-full h-[100vh] mb-12">
         <Image
           src="/TestHeroImage.jpg"
@@ -41,17 +40,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ul className="flex flex-wrap justify-center gap-4">
-        {categories.map((category: any) => (
-          <li key={category.slug}>
-            <Button className="text-lg" asChild>
-              <Link href={`/${category.slug}`} passHref>
-                {category.name}
-              </Link>
-            </Button>
-          </li>
-        ))}
-      </ul>
-    </main>
+    </section>
   );
 }
