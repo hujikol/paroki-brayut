@@ -13,7 +13,7 @@ export const posts: Post[] = [
     title: "Ziarah OMK Paroki Brayut ke Taman Doa Maria Gantang Paroki Brayut",
     date: "Minggu 23 Mei 2022",
     content:
-      "OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah...",
+      "OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
   },
   {
     category: "Warta Paroki",
@@ -21,7 +21,7 @@ export const posts: Post[] = [
     title: "Misa Lansia Paroki St. Yohanes Paulus II Brayut",
     date: "Jumat 20 Mei 2022",
     content:
-      "Telah dilaksanakan Misa untuk umat Lansia Paroki St. Yohanes Paulus II Brayut...",
+      "Telah dilaksanakan Misa untuk umat Lansia Paroki St. Yohanes Paulus II Brayut, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
   },
   {
     category: "Warta Paroki",
@@ -29,7 +29,39 @@ export const posts: Post[] = [
     title: "Perayaan Minggu Palma di Wilayah Tambakrejo",
     date: "Sabtu 9 April 2022",
     content:
-      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu...",
+      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu",
+  },
+  {
+    category: "Warta Paroki",
+    slug: "perayaan-minggu-palma",
+    title: "Perayaan Minggu Palma di Wilayah Tambakrejo",
+    date: "Sabtu 9 April 2022",
+    content:
+      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
+  },
+  {
+    category: "Warta Paroki",
+    slug: "perayaan-minggu-palma",
+    title: "Perayaan Minggu Palma di Wilayah Tambakrejo",
+    date: "Sabtu 9 April 2022",
+    content:
+      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
+  },
+  {
+    category: "Warta Paroki",
+    slug: "perayaan-minggu-palma",
+    title: "Perayaan Minggu Palma di Wilayah Tambakrejo",
+    date: "Sabtu 9 April 2022",
+    content:
+      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
+  },
+  {
+    category: "Warta Paroki",
+    slug: "perayaan-minggu-palma",
+    title: "Perayaan Minggu Palma di Wilayah Tambakrejo",
+    date: "Sabtu 9 April 2022",
+    content:
+      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
   },
   {
     category: "Renungan",
@@ -37,7 +69,26 @@ export const posts: Post[] = [
     title: "Renungan hari senin",
     date: "Senin 11 April 2022",
     content:
-      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu...",
+      "Perayaan Minggu Palma di wilayah Tambakrejo dilaksanakan pada hari Sabtu. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
   },
-  // Add 7 more dummy posts here
+];
+
+export interface Category {
+  slug: string;
+  name: string;
+}
+
+export const categories: Category[] = [
+  {
+    slug: "warta-paroki",
+    name: "Warta Paroki",
+  },
+  {
+    slug: "renungan",
+    name: "Renungan",
+  },
+  {
+    slug: "artikel",
+    name: "Artikel",
+  },
 ];
