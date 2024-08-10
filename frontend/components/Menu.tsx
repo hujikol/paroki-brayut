@@ -12,6 +12,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from "@radix-ui/react-navigation-menu";
 
 //   const fetchMenuData = async (): Promise<MenuItem[]> => {
 //     // Fetch the menu data from an API or other source
@@ -39,7 +47,7 @@ export default function Menu() {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className='flex gap-4'>
       {menuData.map((menuItem, index) => {
         const isOpen = openStates[index];
 
@@ -47,39 +55,41 @@ export default function Menu() {
           <DropdownMenu
             key={menuItem.title}
             onOpenChange={() => handleToggle(index)}
+            modal={false}
           >
             <DropdownMenuTrigger
               className={cn(
-                "font-bold hover:bg-[#303F76] hover:text-white",
+                "font-bold hover:bg-[#303F76] hover:text-white overflow-hidden",
                 isOpen
                   ? "bg-[#303F76] text-white"
-                  : "bg-transparent text-gray-800",
+                  : "bg-transparent text-gray-800"
               )}
               asChild
             >
-              <Button variant="ghost">
+              <Button variant='ghost' className='overflow-hidden'>
                 {menuItem.title}
                 {isOpen ? (
-                  <ChevronUp className="ml-2" size={14} strokeWidth={1.5} />
+                  <ChevronUp className='ml-2' size={14} strokeWidth={1.5} />
                 ) : (
-                  <ChevronDown className="ml-2" size={14} strokeWidth={1.5} />
+                  <ChevronDown className='ml-2' size={14} strokeWidth={1.5} />
                 )}
               </Button>
             </DropdownMenuTrigger>
             {menuItem.children && (
-              <DropdownMenuContent align="start">
-                <ul className="flex flex-col w-64 gap-3 p-4 z-50">
+              <DropdownMenuContent align='start' className='overflow-hidden'>
+                <ul className='flex flex-col w-64 gap-1 p-1'>
                   {menuItem.children.map((child) => (
                     <DropdownMenuItem key={child.title}>
-                      <Link href={child.href ?? "#"} passHref legacyBehavior>
-                        <a className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                          <div className="text-sm font-medium leading-none">
-                            {child.title}
-                          </div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            {child.description}
-                          </p>
-                        </a>
+                      <Link
+                        href={child.href ?? "#"}
+                        className='block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
+                      >
+                        <div className='text-sm font-bold leading-none'>
+                          {child.title}
+                        </div>
+                        <div className='text-sm text-muted-foreground'>
+                          {child.description}
+                        </div>
                       </Link>
                     </DropdownMenuItem>
                   ))}
