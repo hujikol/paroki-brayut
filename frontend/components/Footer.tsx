@@ -1,53 +1,46 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
-import { Instagram, MessageSquareText, Youtube } from "lucide-react";
+import { SquareArrowOutUpRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 export default function Footer() {
   return (
-    <footer
-      className={cn(
-        "w-10/12 text-white mt-auto mb-4 px-2 py-8 rounded-xl",
-        "bg-[#303F76]",
-      )}
-    >
-      <div className="flex flex-row justify-evenly">
+    <footer className=' text-white mt-auto pt-12 pb-8 bg-[#303F76] w-full mx-auto'>
+      <div className='flex flex-row w-10/12 mx-auto justify-evenly'>
         {/* first col */}
-        <div className="flex flex-col gap-3 ml-4 max-w-96">
-          <div className="flex flex-row gap-3 items-center">
+        <div className='flex flex-col gap-3 ml-4 max-w-96'>
+          <div className='flex flex-row gap-3 items-center'>
             <Image
-              className="h-12 w-12 flex-none rounded-full bg-gray-50"
-              src="/logo.png"
-              alt="Website Logo"
+              className='h-12 w-12 flex-none rounded-full bg-gray-50'
+              src='/logo.png'
+              alt='Website Logo'
               width={54}
               height={54}
             />
-            <h3 className="flex flex-col text-lg font-bold">
+            <h3 className='flex flex-col text-lg font-bold'>
               <span>Paroki Brayut</span>
               <span>Santo Yohanes Paulus II</span>
             </h3>
           </div>
-          <Link
-            href="https://maps.app.goo.gl/8depYRoLTyq5BZAS9"
-            className="hover:underline"
-          >
-            <address className="not-italic">
-              Gereja Santo Yusuf Tambakrejo, Rejodani 1, Sariharjo, Ngaglik,
-              Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581
-            </address>
-          </Link>
-          <div className="flex flex-col">
-            <div className="flex flex-row justify-between">
+          <address className='flex items-center not-italic'>
+            Gereja Santo Yusuf Tambakrejo, Rejodani, Sariharjo, Ngaglik, Sleman,
+            DIY 55581
+            <Link href='https://maps.app.goo.gl/8depYRoLTyq5BZAS9'>
+              <SquareArrowOutUpRight width={18} strokeWidth={1.5} />
+            </Link>
+          </address>
+          <div className='flex flex-col'>
+            <div className='flex flex-row justify-between'>
               <span>Email</span>
               <Link
-                href="mailto:sekpar.brayut@kas.id"
-                className="hover:underline"
+                href='mailto:sekpar.brayut@kas.id'
+                className='animate-underline'
               >
                 sekpar.brayut@kas.id
               </Link>
             </div>
-            <div className="flex flex-row justify-between">
+            <div className='flex flex-row justify-between'>
               <span>Telepon</span>
               <span>(0274) 860-9221</span>
             </div>
@@ -55,27 +48,24 @@ export default function Footer() {
         </div>
 
         {/* second col */}
-        <div className="flex flex-col gap-3 mx-12 max-w-96">
-          <h3 className="flex flex-col text-lg font-bold">
+        <div className='flex flex-col gap-3 mx-12 max-w-96'>
+          <h3 className='flex flex-col text-lg font-bold'>
             <span>Sekretariat Paroki Brayut</span>
             <span>Santo Yohanes Paulus II</span>
           </h3>
-          <Link
-            href="https://maps.app.goo.gl/SNFkU9ANmMD2MPkCA"
-            className="hover:underline"
-          >
-            <address className="not-italic">
-              Jogopaten, Pandowoharjo, Kec. Sleman, Kabupaten Sleman, Daerah
-              Istimewa Yogyakarta 55581
-            </address>
-          </Link>
+          <address className='flex items-center not-italic'>
+            Jogopaten, Pandowoharjo, Sleman, Daerah Istimewa Yogyakarta 55581
+            <Link href='https://maps.app.goo.gl/SNFkU9ANmMD2MPkCA'>
+              <SquareArrowOutUpRight width={18} strokeWidth={1.5} />
+            </Link>
+          </address>
           <div>
-            <h3 className="font-bold">Jam Kerja</h3>
-            <div className="flex flex-row justify-between">
+            <h3 className='font-bold'>Jam Kerja</h3>
+            <div className='flex flex-row justify-between'>
               <span>Senin s.d. Jumat</span>
               <span>08.00 s.d. 15.00 WIB</span>
             </div>
-            <div className="flex flex-row justify-between">
+            <div className='flex flex-row justify-between'>
               <span>Sabtu</span>
               <span>08.00 s.d. 14.00 WIB</span>
             </div>
@@ -83,48 +73,77 @@ export default function Footer() {
         </div>
 
         {/* third col */}
-        <div className="flex flex-col gap-3 mr-2 w-4/12">
-          <h3 className="flex flex-col text-lg font-bold">
-            <span>Donasi Pembangunan Gereja</span>
-            <span>Santo Yohanes Paulus II</span>
-          </h3>
-          <div className="flex flex-row gap-4">
+        <div className='flex flex-col gap-3 mr-2 w-4/12'>
+          <div className='flex flex-row gap-4'>
             <div>
               <Image
-                src="/qr_code.png"
-                alt="QR Code"
-                className="mb-2"
-                width={200}
-                height={200}
+                src='/qr_code.png'
+                alt='QR Code'
+                className='mb-2'
+                width={210}
+                height={210}
               />
             </div>
-            <div className="flex flex-col gap-3">
-              <span className="font-bold">
-                PGPM Paroki Santo Yohanes Paulus II
-              </span>
-              <div>
-                <b>Bank Mandiri KCP Sleman</b>
-                <p>No. Rek. 137-00-1632682-5</p>
+            <div className='flex flex-col w-full gap-3'>
+              <h3 className='flex flex-col text-xl font-bold'>
+                Donasi Pembangunan Gereja Santo Yohanes Paulus II
+              </h3>
+              <div className='flex flex-col gap-1'>
+                <div className='flex justify-between'>
+                  <span className='text-gray-300 font-medium'>
+                    Bank Mandiri
+                  </span>
+                  <span className='font-bold'>137 - 00 - 1632682 - 5</span>
+                </div>
+                <div className='flex justify-between'>
+                  <span className='text-gray-300 font-medium'>Bank BRI</span>
+                  <span className='font-bold'>7307 - 01 - 015723 - 53 - 5</span>
+                </div>
+                <div className='flex justify-between'>
+                  <span className='text-gray-300 font-medium'>Bank BCA</span>
+                  <span className='font-bold'>846 - 703 - 0862</span>
+                </div>
+                <span className='italic'>
+                  *A.n. PGPM Paroki Santo Yohanes Paulus II
+                </span>
               </div>
-              <div>
-                <b>Bank BRI Unit Palagan</b>
-                <p>No. Rek. 7307-01-015723-53-5</p>
-              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className='font-bold text-xl'>Narahubung</h3>
+            <div className='flex flex-row justify-between'>
+              <span>Bapak Marcus Budi Santosa</span>
+              <Link
+                href='https://wa.me/628121555752'
+                className='animate-underline font-bold'
+              >
+                (+62) 812-1555-752
+              </Link>
+            </div>
+            <div className='flex flex-row justify-between'>
+              <span>Romo B. Hanjar Krisnawan, Pr</span>
+              <Link
+                href='https://wa.me/6281392434199'
+                className='animate-underline font-bold'
+              >
+                (+62) 813-9243-4199
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
+      <Separator className='mt-6 mb-3' />
       {/* social media & copyright row*/}
-      <div className="flex flex-col mx-auto text-center mt-6 gap-3">
-        <div className="flex gap-6 justify-center mt-2">
-          <Link href="#" className="hover:underline">
+      <div className='flex flex-col mx-auto text-center gap-3'>
+        <div className='flex gap-6 justify-center mt-2'>
+          <Link href='#' className='animate-underline'>
             <span>Instagram</span>
           </Link>
-          <Link href="#" className="hover:underline">
+          <Link href='#' className='animate-underline'>
             <span>Youtube</span>
           </Link>
-          <Link href="#" className="hover:underline">
+          <Link href='#' className='animate-underline'>
             <span>WhatsApp</span>
           </Link>
         </div>
