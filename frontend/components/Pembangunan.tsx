@@ -7,7 +7,7 @@ export default function Pembangunan() {
   const dibutuhkan = 9448100000;
   const dana = (terkumpul / dibutuhkan) * 100;
   return (
-    <section className='relative w-11/12 h-[100vh] my-12 rounded-xl'>
+    <section className='relative w-11/12 h-[85vh] mb-12 rounded-xl'>
       <Image
         src='/GerejaTambakrejo.jpg'
         alt='Hero Image'
@@ -16,7 +16,7 @@ export default function Pembangunan() {
         priority
         className='rounded-xl'
       />
-      <div className='absolute bg-gradient-to-b from-transparent to-black flex items-end w-full h-[100vh] rounded-xl'>
+      <div className='absolute bg-gradient-to-b from-transparent to-black flex items-end w-full h-[85vh] rounded-xl'>
         <div className='flex justify-center p-16 gap-20 text-white'>
           <div className='w-2/3'>
             <div className='text-4xl font-bold mb-6'>Pembangunan Gereja</div>

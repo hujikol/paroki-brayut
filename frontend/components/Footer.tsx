@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Footer() {
   return (
-    <footer className=' text-white mt-auto pt-12 pb-8 bg-[#303F76] w-full mx-auto'>
-      <div className='flex flex-row w-10/12 mx-auto justify-evenly'>
+    <footer className=' text-white mt-auto mb-4 pt-12 pb-8 bg-[#303F76] w-11/12 rounded-xl'>
+      <div className='flex flex-row w-full justify-evenly'>
         {/* first col */}
         <div className='flex flex-col gap-3 ml-4 max-w-96'>
           <div className='flex flex-row gap-3 items-center'>
@@ -75,15 +75,6 @@ export default function Footer() {
         {/* third col */}
         <div className='flex flex-col gap-3 mr-2 w-4/12'>
           <div className='flex flex-row gap-4'>
-            <div>
-              <Image
-                src='/qr_code.png'
-                alt='QR Code'
-                className='mb-2'
-                width={210}
-                height={210}
-              />
-            </div>
             <div className='flex flex-col w-full gap-3'>
               <h3 className='flex flex-col text-xl font-bold'>
                 Donasi Pembangunan Gereja Santo Yohanes Paulus II

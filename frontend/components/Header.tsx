@@ -1,10 +1,39 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
+import { Button } from "./ui/button";
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className='flex flex-row justify-between items-center w-10/12 mt-4 pl-8 pr-12 py-5 top-0 z-20 overflow-hidden backdrop-filter backdrop-blur-sm text-gray-800 fixed  rounded-xl bg-white/60 drop-shadow-md'>
+    <nav
+      className={`flex flex-row justify-between items-center w-full px-24 py-5 top-0 z-20
+     text-gray-800 fixed transition-all ease-in-out duration-500
+    ${
+      isScrolled
+        ? "bg-white/60 backdrop-filter backdrop-blur-sm"
+        : "bg-[#FBF8F4]"
+    }`}
+    >
       {/* Logo and web title */}
       <Link href='/' passHref>
         <div className='flex flex-row gap-3 cursor-pointer'>
@@ -23,6 +52,9 @@ export default function Header() {
       </Link>
 
       <Menu />
+      <Button className='rounded-2xl px-6' asChild>
+        <Link href='#'>Jadwal Misa</Link>
+      </Button>
     </nav>
   );
 }
