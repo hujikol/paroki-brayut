@@ -5,7 +5,7 @@ import { SkeletonCard } from "@/components/SkeletonCard";
 import { posts, Post } from "@/lib/data";
 import { toTittleCase } from "@/lib/utils";
 import { Search } from "lucide-react";
-import { PostCard } from "@/components/PostCard";
+import { PostCardHorizontal } from "@/components/PostCard";
 import { Button } from "@/components/ui/button";
 
 export default function Page({
@@ -21,9 +21,8 @@ export default function Page({
 
   useEffect(() => {
     if (category_name != "") {
-      const filteredPosts = posts.filter(
-        (post) =>
-          post.category.toLowerCase().replace(" ", "-") === category_name,
+      const filteredPosts = posts.filter((post) =>
+        post.category.map((cat) => cat.toLowerCase().replace(" ", "-"))
       );
       setCategoryPosts(filteredPosts);
       setVisiblePosts(filteredPosts.slice(0, 5));
@@ -41,41 +40,43 @@ export default function Page({
   console.log("visiblePosts", visiblePosts);
 
   return (
-    <section className="flex flex-col w-10/12 min-h-screen mt-24 mb-4 px-8 pt-20">
-      <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">
+    <section className='flex flex-col w-10/12 min-h-screen mt-24 mb-12 px-8 pt-20'>
+      <div className='flex justify-between items-center'>
+        <h2 className='text-2xl font-bold'>
           {toTittleCase(category_name, "-")}
         </h2>
-        <div className="relative">
+        <div className='relative'>
           <input
-            type="text"
-            placeholder="Cari artikel..."
-            className="w-full pl-4 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type='text'
+            placeholder='Cari artikel...'
+            className='w-full pl-4 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
           />
           <Search
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+            className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400'
             size={20}
           />
         </div>
       </div>
 
       {loading ? (
-        <div className="flex flex-col gap-4">
+        <div className='flex flex-col gap-4'>
+          <SkeletonCard />
+          <SkeletonCard />
           <SkeletonCard />
           <SkeletonCard />
           <SkeletonCard />
         </div>
       ) : (
-        <div className="flex flex-col gap-4 w-full">
+        <div className='flex flex-col gap-4 w-full'>
           {visiblePosts.map((post: Post) => (
             <div key={post.slug}>
-              <PostCard category={category_name} post={post} />
+              <PostCardHorizontal category={category_name} post={post} />
             </div>
           ))}
           {hasMore && (
             <Button
               onClick={loadMore}
-              className="mt-4 p-2 bg-[#6E90C9] text-white hover:bg-[#2F5391] transition duration-300"
+              className='mt-4 mx-auto px-6 py-4 bg-[#6E90C9] text-white hover:bg-[#2F5391] transition duration-300'
             >
               Muat Lebih Banyak
             </Button>

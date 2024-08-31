@@ -1,13 +1,7 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  useEffect,
-} from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { menuData } from "@/lib/data";
 
-import { Button } from "./ui/button";
 import {
   NavigationMenu,
   NavigationMenuLink,
@@ -17,7 +11,6 @@ import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
 import { cn } from "@/lib/utils";
 

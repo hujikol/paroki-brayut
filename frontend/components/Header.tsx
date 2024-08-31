@@ -52,7 +52,7 @@ export default function Header() {
       </Link>
 
       <Menu />
-      <Button className='rounded-2xl px-6' asChild>
+      <Button className='px-6' asChild>
         <Link href='#'>Jadwal Misa</Link>
       </Button>
     </nav>
