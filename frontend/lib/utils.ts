@@ -1,13 +1,17 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export function toTittleCase(str: string, separator: string = ' ') {
-  return str.
-    split(separator).
-    map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).
-    join(' ');
+export function toTittleCase(str: string, separator: string = " ") {
+  return str
+    .split(separator)
+    .map((w) => w[0].toUpperCase() + w.substr(1).toLowerCase())
+    .join(" ");
+}
+
+export function slugify(text: string) {
+  return text.toLowerCase().replace(/\s+/g, "-");
 }
