@@ -6,7 +6,7 @@ import { cn, toTittleCase } from "@/lib/utils";
 
 interface PostCardProps {
   post: Post;
-  category?: string;
+  category?: string[];
 }
 
 export function PostCardHorizontal({ category, post }: PostCardProps) {

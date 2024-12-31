@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 export default function Page({
   params,
 }: {
-  params: { category_name: string };
+  params: { category_name: string[] };
 }) {
   const category_name = params.category_name ?? "";
   const [visiblePosts, setVisiblePosts] = useState<Post[]>([]);
@@ -20,7 +20,7 @@ export default function Page({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (category_name != "") {
+    if (category_name.length > 0) {
       const filteredPosts = posts.filter((post) =>
         post.category.map((cat) => cat.toLowerCase().replace(" ", "-"))
       );
@@ -43,7 +43,7 @@ export default function Page({
     <section className='flex flex-col w-10/12 min-h-screen mt-24 mb-12 px-8 pt-20'>
       <div className='flex justify-between items-center'>
         <h2 className='text-2xl font-bold'>
-          {toTittleCase(category_name, "-")}
+          {toTittleCase(category_name[0], "-")}
         </h2>
         <div className='relative'>
           <input
