@@ -22,7 +22,7 @@ export function PostCardHorizontal({ category, post }: PostCardProps) {
         />
       </div>
       <div className='flex flex-col p-2 gap-2'>
-        <Link href={`/${slugify(category[0])}/${post.slug}`} passHref>
+        <Link href={`/${slugify(category?.[0] ?? "#")}/${post.slug}`} passHref>
           <h2 className='block mt-1 text-lg leading-tight font-medium text-black hover:underline'>
             {post.title}
           </h2>
@@ -72,7 +72,7 @@ export function PostCardVertical({ category, post }: PostCardProps) {
         />
       </div>
       <div className='flex flex-col p-2 gap-2'>
-        <Link href={`/${slugify(category[0])}/${post.slug}`} passHref>
+        <Link href={`/${slugify(category?.[0] ?? "#")}/${post.slug}`} passHref>
           <h2 className='block mt-1 text-lg leading-tight font-medium text-black hover:underline'>
             {post.title}
           </h2>

@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 export default function Page({
   params,
 }: {
-  params: { category_name: string[] };
+  params: { category_name: string };
 }) {
   const category_name = params.category_name ?? "";
   const [visiblePosts, setVisiblePosts] = useState<Post[]>([]);
