@@ -1,6 +1,6 @@
-"use client";
-
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 import { SkeletonCard } from "@/components/common/SkeletonCard";
 import { posts, Post } from "@/lib/data";
 import { toTittleCase } from "@/lib/utils";
@@ -13,22 +13,25 @@ export default function Page({
 }: {
   params: { category_name: string };
 }) {
-  const category_name = params.category_name ?? "";
+  const router = useRouter();
+  const { category_name } = router.query;
   const [visiblePosts, setVisiblePosts] = useState<Post[]>([]);
   const [categoryPosts, setCategoryPosts] = useState<Post[]>([]);
   const [hasMore, setHasMore] = useState(categoryPosts.length > 5);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (category_name.length > 0) {
+    if (category_name) {
       const filteredPosts = posts.filter((post) =>
-        post.category.map((cat) => cat.toLowerCase().replace(" ", "-"))
+        post.category
+          .map((cat) => cat.toLowerCase().replace(" ", "-"))
+          .includes(category_name as string)
       );
       setCategoryPosts(filteredPosts);
       setVisiblePosts(filteredPosts.slice(0, 5));
       setHasMore(filteredPosts.length > 5);
+      setTimeout(() => setLoading(false), 1000); // Simulate loading delay
     }
-    setTimeout(() => setLoading(false), 1000); // Simulate loading delay
   }, [category_name]);
 
   const loadMore = () => {
@@ -37,13 +40,23 @@ export default function Page({
     setHasMore(newVisiblePosts.length < categoryPosts.length);
   };
 
-  console.log("visiblePosts", visiblePosts);
+  if (loading) {
+    return (
+      <div className='flex flex-col w-10/12 min-h-screen mt-24 mb-4 px-8 pt-20 gap-4'>
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+      </div>
+    );
+  }
 
   return (
     <section className='flex flex-col w-10/12 min-h-screen mt-24 mb-12 px-8 pt-20'>
       <div className='flex justify-between items-center'>
         <h2 className='text-2xl font-bold'>
-          {toTittleCase(category_name, "-")}
+          {toTittleCase(category_name as string, "-")}
         </h2>
         <div className='relative'>
           <input
@@ -58,31 +71,22 @@ export default function Page({
         </div>
       </div>
 
-      {loading ? (
-        <div className='flex flex-col gap-4'>
-          <SkeletonCard />
-          <SkeletonCard />
-          <SkeletonCard />
-          <SkeletonCard />
-          <SkeletonCard />
-        </div>
-      ) : (
-        <div className='flex flex-col gap-4 w-full'>
-          {visiblePosts.map((post: Post) => (
-            <div key={post.slug}>
-              <PostCardHorizontal post={post} category={post.category} />
-            </div>
-          ))}
-          {hasMore && (
-            <Button
-              onClick={loadMore}
-              className='mt-4 mx-auto px-6 py-4 bg-[#6E90C9] text-white hover:bg-[#2F5391] transition duration-300'
-            >
-              Muat Lebih Banyak
-            </Button>
-          )}
-        </div>
-      )}
+      <div className='flex flex-col gap-4 w-full'>
+        {visiblePosts.map((post: Post) => (
+          <div key={post.slug}>
+            <PostCardHorizontal post={post} category={post.category} />
+          </div>
+        ))}
+
+        {hasMore && (
+          <Button
+            onClick={loadMore}
+            className='mt-4 mx-auto px-6 py-4 bg-[#6E90C9] text-white hover:bg-[#2F5391] transition duration-300'
+          >
+            Muat Lebih Banyak
+          </Button>
+        )}
+      </div>
     </section>
   );
 }
