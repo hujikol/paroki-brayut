@@ -16,7 +16,7 @@ export const posts: Post[] = [
       "OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah, OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah. OMK Paroki St. Yohanes Paulus II Brayut mengadakan kegiatan ziarah ke Taman Doa Maria Gantang, Magelang, Jawa Tengah",
   },
   {
-    category: ["Warta Paroki"],
+    category: ["Warta Paroki", "Renungan"],
     slug: "misa-lansia-paroki",
     title: "Misa Lansia Paroki St. Yohanes Paulus II Brayut",
     date: "Jumat 20 Mei 2022",

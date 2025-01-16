@@ -43,7 +43,7 @@ export default function Page({
     <section className='flex flex-col w-10/12 min-h-screen mt-24 mb-12 px-8 pt-20'>
       <div className='flex justify-between items-center'>
         <h2 className='text-2xl font-bold'>
-          {toTittleCase(category_name[0], "-")}
+          {toTittleCase(category_name, "-")}
         </h2>
         <div className='relative'>
           <input
@@ -70,7 +70,7 @@ export default function Page({
         <div className='flex flex-col gap-4 w-full'>
           {visiblePosts.map((post: Post) => (
             <div key={post.slug}>
-              <PostCardHorizontal category={category_name} post={post} />
+              <PostCardHorizontal post={post} category={post.category} />
             </div>
           ))}
           {hasMore && (

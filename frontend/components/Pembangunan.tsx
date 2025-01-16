@@ -71,25 +71,28 @@ export default function Pembangunan() {
                   Donasi Pembangunan Gereja Santo Yohanes Paulus II
                 </h3>
                 <div className='flex flex-col gap-1'>
-                  <div className='flex justify-between'>
+                  <div className='flex flex-col'>
                     <span className='text-gray-300 font-medium'>
                       Bank Mandiri
                     </span>
                     <span className='font-bold'>137 - 00 - 1632682 - 5</span>
                   </div>
-                  <div className='flex justify-between'>
+                  <div className='flex flex-col'>
                     <span className='text-gray-300 font-medium'>Bank BRI</span>
                     <span className='font-bold'>
                       7307 - 01 - 015723 - 53 - 5
                     </span>
                   </div>
-                  <div className='flex justify-between'>
+                  <div className='flex flex-col'>
                     <span className='text-gray-300 font-medium'>Bank BCA</span>
                     <span className='font-bold'>846 - 703 - 0862</span>
                   </div>
-                  <span className='text-sm italic'>
-                    *A.n. PGPM Paroki Santo Yohanes Paulus II
-                  </span>
+                  <div className='flex flex-col'>
+                    <span className='text-sm italic'>*Rekening Atas Nama</span>
+                    <span className='text-sm italic'>
+                      PGPM Paroki Santo Yohanes Paulus II
+                    </span>
+                  </div>
                 </div>
               </div>
 

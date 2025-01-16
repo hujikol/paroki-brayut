@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { badgeVariants } from "./ui/badge";
 import { Post } from "@/lib/data";
-import { cn, toTittleCase } from "@/lib/utils";
+import { cn, toTittleCase, slugify } from "@/lib/utils";
 
 interface PostCardProps {
   post: Post;
@@ -22,7 +22,7 @@ export function PostCardHorizontal({ category, post }: PostCardProps) {
         />
       </div>
       <div className='flex flex-col p-2 gap-2'>
-        <Link href={`/${category ?? "#"}/${post.slug}`} passHref>
+        <Link href={`/${slugify(category[0])}/${post.slug}`} passHref>
           <h2 className='block mt-1 text-lg leading-tight font-medium text-black hover:underline'>
             {post.title}
           </h2>
@@ -35,7 +35,7 @@ export function PostCardHorizontal({ category, post }: PostCardProps) {
           {post.category.map((cat) => (
             <Link
               key={cat}
-              href={`/${cat}`}
+              href={`/${slugify(cat)}`}
               className={cn(
                 badgeVariants({ variant: "outline" }),
                 "hover:bg-blue-100"
@@ -72,23 +72,23 @@ export function PostCardVertical({ category, post }: PostCardProps) {
         />
       </div>
       <div className='flex flex-col p-2 gap-2'>
-        <Link href={`/${category ?? "#"}/${post.slug}`} passHref>
+        <Link href={`/${slugify(category[0])}/${post.slug}`} passHref>
           <h2 className='block mt-1 text-lg leading-tight font-medium text-black hover:underline'>
             {post.title}
           </h2>
         </Link>
-        <div className='flex gap-2'>
+        <div className='flex flex-wrap items-center gap-2'>
           <span className='text-sm text-[#2F5391] font-semibold'>
             {post.date}
           </span>
           |
           {post.category.map((cat) => (
             <Link
-              key={cat}
-              href={`/${cat}`}
+              key={slugify(cat)}
+              href={`/${slugify(cat)}`}
               className={cn(
                 badgeVariants({ variant: "outline" }),
-                "hover:bg-blue-100"
+                "block hover:bg-blue-100"
               )}
             >
               {toTittleCase(cat, "-")}
