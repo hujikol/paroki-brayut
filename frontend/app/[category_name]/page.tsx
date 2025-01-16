@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { SkeletonCard } from "@/components/SkeletonCard";
+import { SkeletonCard } from "@/components/common/SkeletonCard";
 import { posts, Post } from "@/lib/data";
 import { toTittleCase } from "@/lib/utils";
 import { Search } from "lucide-react";
-import { PostCardHorizontal } from "@/components/PostCard";
-import { Button } from "@/components/ui/button";
+import { PostCardHorizontal } from "@/components/posts/PostCard";
+import { Button } from "@/components/common/Button";
 
 export default function Page({
   params,

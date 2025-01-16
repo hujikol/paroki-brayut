@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SquareArrowOutUpRight } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/common/Separator";
 
 export default function Footer() {
   return (

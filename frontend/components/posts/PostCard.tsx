@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { badgeVariants } from "./ui/badge";
+import { badgeVariants } from "@components/common/Badge";
 import { Post } from "@/lib/data";
 import { cn, toTittleCase, slugify } from "@/lib/utils";
 

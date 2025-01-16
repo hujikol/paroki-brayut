@@ -1,6 +1,6 @@
 import { posts } from "@/lib/data";
-import { PostCardVertical } from "./PostCard";
-import { Button } from "./ui/button";
+import { PostCardVertical } from "@components/posts/PostCard";
+import { Button } from "@components/common/Button";
 import Link from "next/link";
 
 export default function PostFeed() {

@@ -11,7 +11,7 @@ import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
-} from "./ui/navigation-menu";
+} from "@components/common/NavigationMenu";
 import { cn } from "@/lib/utils";
 
 //   const fetchMenuData = async (): Promise<MenuItem[]> => {

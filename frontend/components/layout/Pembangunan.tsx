@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "@/components/common/Progress";
 import Link from "next/link";
 
 export default function Pembangunan() {

@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Menu from "./Menu";
-import { Button } from "./ui/button";
+import Menu from "@components/layout/Menu";
+import { Button } from "@components/common/Button";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);

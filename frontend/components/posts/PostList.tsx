@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { posts } from "../lib/data";
+import { posts } from "@lib/data";
 import { useState } from "react";
 
 export default function PostList({ category }: { category: string }) {

@@ -1,7 +1,7 @@
-import Hero from "@/components/Hero";
-import Pembangunan from "@/components/Pembangunan";
-import PostFeed from "@/components/PostFeed";
-import QuickMenu from "@/components/QuickMenu";
+import Hero from "@/components/layout/Hero";
+import Pembangunan from "@/components/layout/Pembangunan";
+import PostFeed from "@/components/posts/PostFeed";
+import QuickMenu from "@/components/layout/QuickMenu";
 
 export default function Home() {
   return (
