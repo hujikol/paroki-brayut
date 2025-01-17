@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { posts, Post } from "@/lib/data";
 
+import NotFound from "@/pages/404";
+
 export default function PostDetail() {
   const router = useRouter();
   const { slug } = router.query;
@@ -29,11 +31,7 @@ export default function PostDetail() {
   }
 
   if (!data) {
-    return (
-      <div className='flex flex-col w-10/12 min-h-screen mt-24 mb-4 px-8 pt-20'>
-        Post not found
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/common/Button";
-import { ChevronRight, HomeIcon } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export default function NotFound() {
   return (

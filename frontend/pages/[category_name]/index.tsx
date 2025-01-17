@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import { SkeletonCard } from "@/components/common/SkeletonCard";
-import { posts, Post } from "@/lib/data";
+import { posts, Post, categories } from "@/lib/data";
 import { toTittleCase } from "@/lib/utils";
 import { Search } from "lucide-react";
 import { PostCardHorizontal } from "@/components/posts/PostCard";
 import { Button } from "@/components/common/Button";
 
-export default function Page({
-  params,
-}: {
-  params: { category_name: string };
-}) {
+import NotFound from "@/pages/404";
+
+export default function Page({}: { params: { category_name: string } }) {
   const router = useRouter();
   const { category_name } = router.query;
+  const category_list = categories.map((cat) => cat.slug);
+
   const [visiblePosts, setVisiblePosts] = useState<Post[]>([]);
   const [categoryPosts, setCategoryPosts] = useState<Post[]>([]);
   const [hasMore, setHasMore] = useState(categoryPosts.length > 5);
@@ -39,6 +39,18 @@ export default function Page({
     setVisiblePosts(newVisiblePosts);
     setHasMore(newVisiblePosts.length < categoryPosts.length);
   };
+
+  if (!category_list.includes(category_name as string)) {
+    return <NotFound />;
+  }
+
+  if (categoryPosts.length === 0) {
+    return (
+      <div className='flex flex-col w-10/12 min-h-screen mt-24 mb-4 px-8 pt-20'>
+        <h2 className='text-xl'>Belum terdapat artikel</h2>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
